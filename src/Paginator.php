@@ -13,7 +13,7 @@ class Paginator
     public $max = 10;
     public $active = 1;
     public $base = "/";
-
+    public $reach = 2;
     function __construct($max = 10)
     {
         $this->max = $max;
@@ -40,8 +40,19 @@ class Paginator
     {
         $this->base = $base;
     }
+    public function set_reach($reach){
+        $this->reach = $reach;
+    }
     public function get_the_pagination()
     {
+        $reachedArray = [1, $this->max];
+        $reachCounter = 0;
+        while($reachCounter <= $this->reach){
+
+            array_push($reachedArray, $this->active - $reachCounter);
+            array_push($reachedArray, $this->active + $reachCounter);
+            $reachCounter++;
+        }
         $payload = "";
         $i = 1;
         $payload = $payload . $this->paginationWrapperStart;
@@ -49,7 +60,8 @@ class Paginator
             if ($i == $this->active) {
                 $payload = $payload . $this->activePageWrapperStart . '<a href="' . $this->base . $i . '">' . $i . "</a>" . $this->activePageWrapperEnd;
             } else {
-                $payload = $payload . $this->pageWrapperStart . '<a href="' . $this->base . $i . '">' . $i . "</a>" . $this->pageWrapperEnd;
+                $dom = (in_array($i, $reachedArray)) ? $this->pageWrapperStart . '<a href="' . $this->base . $i . '">' . $i . "</a>" . $this->pageWrapperEnd : '.';
+                $payload = $payload . $dom;
             }
             $i++;
         }
