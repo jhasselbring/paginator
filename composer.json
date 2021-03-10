@@ -1,6 +1,7 @@
 {
     "name": "jhasselbring/paginator",
     "description": "A simple paginator",
+    "license": "MIT",
     "require": {
         "php": ">=7.0"
     }
