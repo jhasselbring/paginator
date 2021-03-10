@@ -5,7 +5,10 @@
     "autoload": {
         "psr-4": {
             "jhasselbring\\Paginator\\": "src/"
-        }
+        },
+        "files": [
+            "src/Paginator.php"
+        ]
     },
     "require": {
         "php": ">=7.0"
