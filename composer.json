@@ -2,6 +2,11 @@
     "name": "jhasselbring/paginator",
     "description": "A simple paginator",
     "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "jhasselbring\\Paginator\\": "src/"
+        }
+    },
     "require": {
         "php": ">=7.0"
     }
