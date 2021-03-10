@@ -1,0 +1,7 @@
+{
+    "name": "jhasselbring/paginator",
+    "description": "A simple paginator",
+    "require": {
+        "php": ">=7.0"
+    }
+}
